@@ -1,0 +1,4 @@
+discord.py[voice]>=2.4.0,<3
+yt-dlp>=2025.8.0
+yt-dlp-ejs>=0.3.0
+python-dotenv>=1.0.1
