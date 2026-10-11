@@ -5,6 +5,7 @@
 ## 功能
 
 - `/play`：播放歌名、YouTube 網址或播放清單
+- `/playmany`：依主題批次搜尋並依序加入 1～25 首歌曲（預設 10 首）
 - `/queue`：顯示目前曲目與等待佇列
 - `/skip`：點播者／管理員直接跳過，其他聽眾採過半投票
 - `/pause`、`/resume`
@@ -12,6 +13,13 @@
 - `/leave`：停止並離開
 - 歌曲播放完且沒有下一首時，自動離開語音頻道
 - 播放前重新取得串流網址，並使用 FFmpeg reconnect 選項降低來源中斷問題
+- 播放中的串流若中斷，會重新取得來源並自動重試目前歌曲一次
+
+例如搜尋英雄聯盟世界賽歌曲：
+
+```text
+/playmany query:League of Legends Worlds Anthem official count:7
+```
 
 ## 安裝
 

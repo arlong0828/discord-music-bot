@@ -12,6 +12,16 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(queue.clear(), 1)
         self.assertEqual(len(queue), 0)
 
+    def test_add_front_retries_current_track_before_next_track(self):
+        queue = TrackQueue()
+        current = Track("current", "https://example.com/current", 1)
+        queue.add([Track("next", "https://example.com/next", 2)])
+
+        queue.add_front(current)
+
+        self.assertIs(queue.pop(), current)
+        self.assertEqual(queue.pop().title, "next")
+
     def test_skip_vote_majority(self):
         votes = SkipVotes()
         self.assertEqual(votes.vote(1, 4), (1, 2, False))

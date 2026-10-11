@@ -12,6 +12,7 @@ class Track:
     webpage_url: str
     requester_id: int
     duration: int | None = None
+    playback_retries: int = 0
 
 
 class TrackQueue:
@@ -20,6 +21,9 @@ class TrackQueue:
 
     def add(self, tracks: list[Track]) -> None:
         self._items.extend(tracks)
+
+    def add_front(self, track: Track) -> None:
+        self._items.appendleft(track)
 
     def pop(self) -> Track | None:
         return self._items.popleft() if self._items else None
